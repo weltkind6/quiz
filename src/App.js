@@ -15,3 +15,5 @@ function App() {
 }
 
 export default App;
+
+//git config core.autocrlf true

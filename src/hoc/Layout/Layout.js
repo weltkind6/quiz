@@ -3,9 +3,6 @@ import classes from './Layout.module.css'
 
 
 class Layout extends React.Component {
-    state = {
-        quiz: ''
-    }
     render() {
         return (
             <div className={classes.layout}>
