@@ -3,10 +3,13 @@ import AnswerItem from "./AnswerItems/AnswersItem";
 import classes from './AnswersList.module.css'
 
 const AnswersList = (props) => {
-
     return (
         <ul className={classes.answerBlock}>
-               <AnswerItem answers={props.answers}/>
+            {props.answers.map(a =>  <AnswerItem
+                answers={a.text}
+                onAnswerClick={props.onAnswerClick}
+                key={a.id}
+                id={a.id}/>) }
         </ul>
     )
 }

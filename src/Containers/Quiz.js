@@ -4,13 +4,18 @@ import ActiveQuiz from "../Components/ActiveQuiz/activeQuiz";
 
 class Quiz extends React.Component {
     state = {
+        questions: 'In what year was Persia renamed Iran?',
+        correctAnswer: '4',
         answers: [
-            {text: 'I am fine', id: 1},
-            {text: 'I am fine. Thanks..', id: 2},
-            {text: 'That is ok', id: 3},
-            {text: 'I would rather to stay home..', id: 4},
-            {text: 'He needs more money to buy macBook Pro 2019', id: 5},
+            {text: 'It was in ... 1922', id: 1},
+            {text: 'It was in ... 1756', id: 2},
+            {text: 'It was in ... 2021', id: 3},
+            {text: 'It was in ... 1953', id: 4},
+            {text: 'I\'ve had enough! I\'m going to Google', id: 5},
         ]
+    }
+    onAnswerClickHandler = (answerId) => {
+        console.log('answerId', answerId)
     }
 
     render() {
@@ -20,7 +25,11 @@ class Quiz extends React.Component {
 
                 <div className={classes.quizWrapper}>
                     <h2>Look at this answer:</h2>
-                    <ActiveQuiz answers={this.state.answers}/>
+                    <ActiveQuiz
+                        answers={this.state.answers}
+                        questions={this.state.questions}
+                        onAnswerClick={this.onAnswerClickHandler}
+                    />
                 </div>
             </div>
         );
