@@ -7,8 +7,8 @@ const ActiveQuiz = (props) => {
     return (
         <div className={classes.activeQuiz}>
             <div className={classes.itemsWrapper}>
-                <span><strong className={classes.question}>{props.questions}</strong></span>
-                <div><small>4 of 12</small></div>
+                <span><strong className={classes.question}>{props.numberQuestion}. {props.questions}</strong></span>
+                <div><small>{props.numberQuestion} of {props.answers.length}</small></div>
             </div>
 
             <div>
