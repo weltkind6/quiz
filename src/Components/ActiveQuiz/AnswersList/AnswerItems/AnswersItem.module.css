@@ -1,6 +1,19 @@
 .ansItems {
-
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 7px;
+    list-style: none;
+    font-size: 1.2em;
+    font-weight: bold;
 }
+.ansItems:hover {
+    background-color: lightgreen;
+    transition: background-color .3ms ease-in-out;
+    cursor: pointer;
+    border: 3px solid lemonchiffon;
+}
+
 .item {
 
 }

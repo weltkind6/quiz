@@ -19,7 +19,7 @@ class Quiz extends React.Component {
             <div className={classes.quiz}>
 
                 <div className={classes.quizWrapper}>
-                    <h2>Quizz</h2>
+                    <h2>Look at this answer:</h2>
                     <ActiveQuiz answers={this.state.answers}/>
                 </div>
             </div>
