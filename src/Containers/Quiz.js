@@ -33,18 +33,30 @@ class Quiz extends React.Component {
             }
         ]
     }
-    quizFinished = () => {
-        return this.state.activeQuestion + 1 === this.state.quiz.length
-    }
+
     onAnswerClickHandler = (answerId) => {
-        console.log('answerId', answerId)
         const question = this.state.quiz[this.state.activeQuestion].correctAnswer
-        if (answerId === question) {
-            alert('ПРАВИЛЬНО!')
+        if (question === answerId) {
+
             this.setState({
-                activeQuestion: this.state.activeQuestion + 1
+                answerState: 'How it works???'
             })
+
+            const timeout = window.setTimeout(() => {
+                if (this.quizFinished()) {
+                    console.log('finished')
+                } else {
+                    this.setState({
+                        activeQuestion: this.state.activeQuestion + 1
+                    })
+                }
+                window.clearTimeout(timeout)
+            }, 1000)
         }
+    }
+
+    quizFinished() {
+        return this.state.activeQuestion + 1 === this.state.quiz.length
     }
 
     render() {
