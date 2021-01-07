@@ -9,7 +9,7 @@ class Quiz extends React.Component {
         quiz: [
             {
                 questions: 'In what year was Persia renamed Iran?',
-                correctAnswer: '4',
+                correctAnswer: 4,
                 id: 1,
                 answers: [
                     {text: 'It was in ... 1922', id: 1},
@@ -21,7 +21,7 @@ class Quiz extends React.Component {
             },
             {
                 questions: 'In what year was Saint Petersburg founded?',
-                correctAnswer: '1',
+                correctAnswer: 1,
                 id: 2,
                 answers: [
                     {text: 'It was in ... 1703', id: 1},
@@ -33,15 +33,21 @@ class Quiz extends React.Component {
             }
         ]
     }
+    quizFinished = () => {
+        return this.state.activeQuestion + 1 === this.state.quiz.length
+    }
     onAnswerClickHandler = (answerId) => {
         console.log('answerId', answerId)
-        this.setState({
-            activeQuestion: this.state.activeQuestion + 1
-        })
+        const question = this.state.quiz[this.state.activeQuestion].correctAnswer
+        if (answerId === question) {
+            alert('ПРАВИЛЬНО!')
+            this.setState({
+                activeQuestion: this.state.activeQuestion + 1
+            })
+        }
     }
 
     render() {
-        debugger
         return (
             <div className={classes.quiz}>
 
