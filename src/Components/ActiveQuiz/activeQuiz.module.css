@@ -5,13 +5,16 @@
     border-radius: 5px;
     box-sizing: border-box;
 }
+
 .itemsWrapper {
     display: flex;
     justify-content: space-between;
 }
+
 .ansWrapper {
     padding: 0;
 }
+
 .question {
     font-size: 25px;
 }

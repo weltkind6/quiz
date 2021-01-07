@@ -5,6 +5,7 @@ import ActiveQuiz from "../Components/ActiveQuiz/activeQuiz";
 class Quiz extends React.Component {
 
     state = {
+        isFinished: false,
         activeQuestion: 0,
         quiz: [
             {
@@ -38,13 +39,12 @@ class Quiz extends React.Component {
         const question = this.state.quiz[this.state.activeQuestion].correctAnswer
         if (question === answerId) {
 
-            this.setState({
-                answerState: 'How it works???'
-            })
-
             const timeout = window.setTimeout(() => {
                 if (this.quizFinished()) {
-                    console.log('finished')
+                    this.setState({
+                        isFinished: true
+                    })
+
                 } else {
                     this.setState({
                         activeQuestion: this.state.activeQuestion + 1
@@ -65,12 +65,16 @@ class Quiz extends React.Component {
 
                 <div className={classes.quizWrapper}>
                     <h2>Look at this answer:</h2>
-                    <ActiveQuiz
-                        answers={this.state.quiz[this.state.activeQuestion].answers}
-                        questions={this.state.quiz[this.state.activeQuestion].questions}
-                        onAnswerClick={this.onAnswerClickHandler}
-                        numberQuestion={this.state.activeQuestion + 1}
-                    />
+                    {
+                        this.state.isFinished === true ? <h1>This quiz is finished</h1>
+                            : <ActiveQuiz
+                                answers={this.state.quiz[this.state.activeQuestion].answers}
+                                questions={this.state.quiz[this.state.activeQuestion].questions}
+                                onAnswerClick={this.onAnswerClickHandler}
+                                numberQuestion={this.state.activeQuestion + 1}
+                            />
+                    }
+
                 </div>
             </div>
         );

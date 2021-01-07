@@ -4,16 +4,17 @@ import AnswersList from "./AnswersList/AnswersList";
 
 
 const ActiveQuiz = (props) => {
+
     return (
         <div className={classes.activeQuiz}>
             <div className={classes.itemsWrapper}>
                 <span><strong className={classes.question}>{props.numberQuestion}. {props.questions}</strong></span>
-                <div><small>{props.numberQuestion} of {props.answers.length}</small></div>
+                <div><small>{props.numberQuestion} <span>of</span> {props.answers.length}</small></div>
             </div>
 
             <div>
                 <div className={classes.ansWrapper}>
-                    <AnswersList answers={props.answers} onAnswerClick={props.onAnswerClick}/>
+                    <AnswersList answers={props.answers} onAnswerClick={props.onAnswerClick} state={props.state}/>
                 </div>
             </div>
         </div>
