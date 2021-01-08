@@ -1,0 +1,13 @@
+.finishedQuiz {
+    border: 2px solid #fff;
+}
+ul {
+    padding: 0;
+}
+li {
+    list-style: none;
+
+}
+.finishedWrapper {
+    padding: 20px;
+}

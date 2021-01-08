@@ -3,6 +3,7 @@ import classes from './AnswersItem.module.css'
 
 
 const AnswerItem = (props) => {
+
     return (
         <li onClick={() =>
             props.onAnswerClick(props.id)}

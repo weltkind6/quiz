@@ -1,10 +1,12 @@
 import React from 'react'
 import classes from './Quiz.module.css'
 import ActiveQuiz from "../Components/ActiveQuiz/activeQuiz";
+import FinishedQuiz from "../Components/Finished/Finished";
 
 class Quiz extends React.Component {
 
     state = {
+        results: {},
         isFinished: false,
         activeQuestion: 0,
         quiz: [
@@ -37,7 +39,16 @@ class Quiz extends React.Component {
 
     onAnswerClickHandler = (answerId) => {
         const question = this.state.quiz[this.state.activeQuestion].correctAnswer
+        const results = this.state.results
         if (question === answerId) {
+
+
+            if (!results[question.id]) {
+                results[question.id] = 'success'
+            }
+            this.setState({
+                results
+            })
 
             const timeout = window.setTimeout(() => {
                 if (this.quizFinished()) {
@@ -52,7 +63,20 @@ class Quiz extends React.Component {
                 }
                 window.clearTimeout(timeout)
             }, 1000)
+        } else {
+            results[answerId] = 'error'
+            this.setState({
+                results: results
+            })
         }
+    }
+
+    restartQuiz = () => {
+      this.setState({
+          activeQuestion: 0,
+          isFinished: false,
+          results: {}
+      })
     }
 
     quizFinished() {
@@ -66,7 +90,10 @@ class Quiz extends React.Component {
                 <div className={classes.quizWrapper}>
                     <h2>Look at this answer:</h2>
                     {
-                        this.state.isFinished === true ? <h1>This quiz is finished</h1>
+                        this.state.isFinished === true ?
+                            <FinishedQuiz results={this.state.results}
+                                          quiz={this.state.quiz}
+                                          restartQuiz={this.restartQuiz}/>
                             : <ActiveQuiz
                                 answers={this.state.quiz[this.state.activeQuestion].answers}
                                 questions={this.state.quiz[this.state.activeQuestion].questions}
